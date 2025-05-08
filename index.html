@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiche de Vœux</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Step 1: Matricule and Password Input -->
+        <div id="step1" class="step active">
+            <h2>Step 1: Enter Your Matricule and Password / أدخل رقم تسجيلك وكلمة المرور</h2>
+
+            <div class="form-group">
+                <label for="matricule">Matricule:</label>
+                <input type="text" id="matricule" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password (Bac Average without dot) / كلمة المرور:</label>
+                <input type="password" id="password" maxlength="4" required>
+            </div>
+
+            <button id="nextStep1" class="btn">Next / التالي</button>
+        </div>
+
+        <!-- Step 2: Data Confirmation -->
+        <div id="step2" class="step">
+            <h2>Step 2: Confirm Your Information / تأكيد معلوماتك</h2>
+
+            <div class="form-group double-columns">
+                <div class="form-subgroup">
+                    <label>Last Name:</label>
+                    <input type="text" id="nom_en" readonly>
+                </div>
+                <div class="form-subgroup">
+                    <label>اللقب:</label>
+                    <input type="text" id="nom_ar" readonly>
+                </div>
+            </div>
+
+            <div class="form-group double-columns">
+                <div class="form-subgroup">
+                    <label>First Name:</label>
+                    <input type="text" id="prenom_en" readonly>
+                </div>
+                <div class="form-subgroup">
+                    <label>الإسم:</label>
+                    <input type="text" id="prenom_ar" readonly>
+                </div>
+            </div>
+
+            <div class="form-group double-columns">
+                <div class="form-subgroup">
+                    <label>Place of Birth:</label>
+                    <input type="text" id="lieu_en" readonly>
+                </div>
+                <div class="form-subgroup">
+                    <label>مكان الميلاد:</label>
+                    <input type="text" id="lieu_ar" readonly>
+                </div>
+            </div>
+
+            <div class="form-group double-columns">
+                <div class="form-subgroup">
+                    <label>Date of Birth:</label>
+                    <input type="text" id="date_en" readonly>
+                </div>
+                <div class="form-subgroup">
+                    <label>تاريخ الميلاد:</label>
+                    <input type="text" id="date_ar" readonly>
+                </div>
+            </div>
+
+            <div class="form-group double-columns">
+                <div class="form-subgroup">
+                    <label>Baccalaureate Average:</label>
+                    <input type="text" id="moyenne_en" readonly>
+                </div>
+                <div class="form-subgroup">
+                    <label>معدل البكالوريا:</label>
+                    <input type="text" id="moyenne_ar" readonly>
+                </div>
+            </div>
+
+            <!-- Confirmation Question -->
+            <div class="form-group">
+                <p>Is all the information correct? / هل جميع المعلومات صحيحة؟</p>
+                <label><input type="radio" name="confirmation" value="yes" onchange="handleConfirmation(this)"> Yes /
+                    نعم</label><br>
+                <label><input type="radio" name="confirmation" value="no" onchange="handleConfirmation(this)"> No /
+                    لا</label>
+            </div>
+
+            <!-- Correction Textarea -->
+            <div class="form-group" id="correctionBox" style="display:none;">
+                <label>Please describe the incorrect data / يرجى وصف المعلومات الخاطئة:</label>
+                <textarea id="correctionText" rows="3" placeholder="Write here..."></textarea>
+            </div>
+
+            <button id="nextStep2" class="btn" disabled>Confirm / تأكيد</button>
+        </div>
+
+        <!-- Step 3: Fiche de Vœux Form -->
+        <div id="step3" class="step">
+            <h2>Step 3: Fill Your Choices / اختر رغباتك</h2>
+
+            <div class="form-group">
+                <label for="choix1">Choice 1 / الرغبة الأولى:</label>
+                <select id="choix1" required>
+                    <option value="" disabled selected hidden>-- Select a choice / اختر رغبة --</option>
+                    <option value="Food Sciences - علوم الأغذية">Food Sciences - علوم الأغذية</option>
+                    <option value="Biotechnology - التكنولوجيا الحيوية">Biotechnology - التكنولوجيا الحيوية</option>
+                    <option value="Biological Sciences - العلوم البيولوجية">Biological Sciences - العلوم البيولوجية
+                    </option>
+                    <option value="Ecology and Environment - علم البيئة والبيئة">Ecology and Environment - علم البيئة
+                        والبيئة</option>
+                    <option value="Agronomic Sciences - العلوم الزراعية">Agronomic Sciences - العلوم الزراعية</option>
+                    <option value="Marine and Freshwater Hydrobiology - الهيدرولوجيا البحرية والقارية">Marine and
+                        Freshwater Hydrobiology - الهيدرولوجيا البحرية والقارية</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="choix2">Choice 2 / الرغبة الثانية:</label>
+                <select id="choix2" required>
+                    <option value="" disabled selected hidden>-- Select a choice / اختر رغبة --</option>
+                    <option value="Food Sciences - علوم الأغذية">Food Sciences - علوم الأغذية</option>
+                    <option value="Biotechnology - التكنولوجيا الحيوية">Biotechnology - التكنولوجيا الحيوية</option>
+                    <option value="Biological Sciences - العلوم البيولوجية">Biological Sciences - العلوم البيولوجية
+                    </option>
+                    <option value="Ecology and Environment - علم البيئة والبيئة">Ecology and Environment - علم البيئة
+                        والبيئة</option>
+                    <option value="Agronomic Sciences - العلوم الزراعية">Agronomic Sciences - العلوم الزراعية</option>
+                    <option value="Marine and Freshwater Hydrobiology - الهيدرولوجيا البحرية والقارية">Marine and
+                        Freshwater Hydrobiology - الهيدرولوجيا البحرية والقارية</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="choix3">Choice 3 / الرغبة الثالثة:</label>
+                <select id="choix3" required>
+                    <option value="" disabled selected hidden>-- Select a choice / اختر رغبة --</option>
+                    <option value="Food Sciences - علوم الأغذية">Food Sciences - علوم الأغذية</option>
+                    <option value="Biotechnology - التكنولوجيا الحيوية">Biotechnology - التكنولوجيا الحيوية</option>
+                    <option value="Biological Sciences - العلوم البيولوجية">Biological Sciences - العلوم البيولوجية
+                    </option>
+                    <option value="Ecology and Environment - علم البيئة والبيئة">Ecology and Environment - علم البيئة
+                        والبيئة</option>
+                    <option value="Agronomic Sciences - العلوم الزراعية">Agronomic Sciences - العلوم الزراعية</option>
+                    <option value="Marine and Freshwater Hydrobiology - الهيدرولوجيا البحرية والقارية">Marine and
+                        Freshwater Hydrobiology - الهيدرولوجيا البحرية والقارية</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="choix4">Choice 4 / الرغبة الرابعة:</label>
+                <select id="choix4" required>
+                    <option value="" disabled selected hidden>-- Select a choice / اختر رغبة --</option>
+                    <option value="Food Sciences - علوم الأغذية">Food Sciences - علوم الأغذية</option>
+                    <option value="Biotechnology - التكنولوجيا الحيوية">Biotechnology - التكنولوجيا الحيوية</option>
+                    <option value="Biological Sciences - العلوم البيولوجية">Biological Sciences - العلوم البيولوجية
+                    </option>
+                    <option value="Ecology and Environment - علم البيئة والبيئة">Ecology and Environment - علم البيئة
+                        والبيئة</option>
+                    <option value="Agronomic Sciences - العلوم الزراعية">Agronomic Sciences - العلوم الزراعية</option>
+                    <option value="Marine and Freshwater Hydrobiology - الهيدرولوجيا البحرية والقارية">Marine and
+                        Freshwater Hydrobiology - الهيدرولوجيا البحرية والقارية</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="choix5">Choice 5 / الرغبة الخامسة:</label>
+                <select id="choix5" required>
+                    <option value="" disabled selected hidden>-- Select a choice / اختر رغبة --</option>
+                    <option value="Food Sciences - علوم الأغذية">Food Sciences - علوم الأغذية</option>
+                    <option value="Biotechnology - التكنولوجيا الحيوية">Biotechnology - التكنولوجيا الحيوية</option>
+                    <option value="Biological Sciences - العلوم البيولوجية">Biological Sciences - العلوم البيولوجية
+                    </option>
+                    <option value="Ecology and Environment - علم البيئة والبيئة">Ecology and Environment - علم البيئة
+                        والبيئة</option>
+                    <option value="Agronomic Sciences - العلوم الزراعية">Agronomic Sciences - العلوم الزراعية</option>
+                    <option value="Marine and Freshwater Hydrobiology - الهيدرولوجيا البحرية والقارية">Marine and
+                        Freshwater Hydrobiology - الهيدرولوجيا البحرية والقارية</option>
+                </select>
+                <button id="nextStep3" class="btn">Next / التالي</button>
+            </div>
+        </div>
+
+        <!-- Step 4: Email Confirmation -->
+        <div id="step4" class="step">
+            <h2>Step 4: Confirm Your Email / تأكيد بريدك الإلكتروني</h2>
+
+            <div class="form-group">
+                <label for="email">Enter your email / أدخل بريدك الإلكتروني:</label>
+                <input type="email" id="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="confirmEmail">Confirm your email / أكد بريدك الإلكتروني:</label>
+                <input type="email" id="confirmEmail" required>
+            </div>
+
+            <button id="submitForm" class="btn">Submit / إرسال</button>
+        </div>
+
+
+        <!-- Step 5: Thank You -->
+        <div id="step5" class="step">
+            <h2>Thank you! / شكراً لك!</h2>
+            <p>Your form has been submitted successfully. / تم إرسال النموذج بنجاح</p>
+        </div>
+
+
+        <script src="database.js"></script>
+        <script src="main.js"></script>
+</body>
+
+</html>
