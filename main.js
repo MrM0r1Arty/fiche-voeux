@@ -82,7 +82,7 @@ document.getElementById("nextStep3").addEventListener("click", () => {
 
 // Send data to Google Sheets
 async function submitToGoogleSheet(data) {
-    const response = await fetch("https://script.google.com/macros/s/AKfycbwQ-pIDEhHl_xjdv-0TxVdQPTzPhxief9fZmRTYDh6agkgAc-O4W9HzuHY31KVVr-Le/exec", {
+    const response = await fetch("https://corsproxy.io/?https://script.google.com/macros/s/AKfycbwQ-pIDEhHl_xjdv-0TxVdQPTzPhxief9fZmRTYDh6agkgAc-O4W9HzuHY31KVVr-Le/exec", {
         method: "POST",
         body: JSON.stringify(data),
         headers: {
